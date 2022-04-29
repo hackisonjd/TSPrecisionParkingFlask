@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, redirect, url_for, render_template, request,
 from flask_sqlalchemy import SQLAlchemy
 from .models import Location, Sensor, Record
 from . import db
+import json
 
 views = Blueprint('views', __name__)
 
@@ -22,10 +23,11 @@ def admin():
 @views.route("/push-data", methods=['POST'])
 def post_status():
     if request.method == 'POST':
-        data = request.get_json()
-        device_id = data.device_id
+        data = json.loads(request.get_json())
+        print(data)
+        device_id = data["device_id"]
         sensor = Sensor.query.filter_by(sensor_id = device_id).first()
-        sensor.records = data.status
+        sensor.records = data["status"]
         db.session.commit()
         return redirect('/')
 
