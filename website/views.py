@@ -26,8 +26,14 @@ def post_status():
         data = json.loads(request.get_json())
         print(data)
         device_id = data["device_id"]
+        exists = Sensor.query.filter_by(sensor_id = device_id).first() is not None
+        if not exists:
+            sensor = Sensor()
+            db.session.add(sensor)
         sensor = Sensor.query.filter_by(sensor_id = device_id).first()
         sensor.records = data["status"]
         db.session.commit()
         return redirect('/')
+
+        
 
