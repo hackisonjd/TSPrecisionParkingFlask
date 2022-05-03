@@ -6,7 +6,6 @@ class Location(db.Model):
     location_id = db.Column(db.Integer().with_variant(db.Integer, "sqlite"), primary_key=True)
     location_name = db.Column(db.String(50))
     longitude = db.Column(db.Numeric(8,5))
-    latitude = db.Column(db.Numeric(8,5))
     sensors = db.relationship('Sensor')
 
 # Data for each individual sensor.
