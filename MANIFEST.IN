@@ -1,4 +1,0 @@
-include website/database.db 
-graft website/templates
-graft website/data
-global-exclude *.pyc
