@@ -11,7 +11,7 @@ def home():
     sensors = Sensor.query.all()
     records = {}
     for sensor in sensors:
-        records[sensor] = Record.query.filter_by(sensor_id = sensor.sensor_id).first()
+        records[sensor] = Record.query.filter_by(sensor_id = sensor.sensor_id).order_by(Record.record_timestamp.desc()).first()
 
     return render_template('index.html', sensors = sensors, records = records)
 
