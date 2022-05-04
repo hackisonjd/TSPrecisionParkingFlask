@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
-<form action="#" method="POST">
-    <input type="submit" name="deploy_button" value="Deploy Sensor">
-</form>
+{% for sensor in sensors %}
+<h3>Sensor</h3><hr>
+<p>{{sensor.sensor_id}}</p>
+<h3>Started at</h3><hr>
+<p>{{sensor.start_time}}</p>
+<h3>Is occupied?</h3>
+<p>{{records[sensor]}}</p>
+{% endfor %}
 {% endblock %}

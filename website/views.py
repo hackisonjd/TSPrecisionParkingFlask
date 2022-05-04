@@ -8,13 +8,12 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
-        if request.form['deploy_button'] == 'Deploy Sensor':
-            sensor = Sensor()
-            db.session.add(sensor)
-            db.session.commit()
+    sensors = Sensor.query.all()
+    records = {}
+    for sensor in sensors:
+        records[sensor] = Record.query.filter_by(sensor_id = sensor.sensor_id).first()
 
-    return render_template('index.html')
+    return render_template('index.html', sensors = sensors, records = records)
 
 @views.route("/admin")
 def admin():
