@@ -1,12 +1,33 @@
 {% extends "base.html" %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
+<table>
+    <caption>Trouble Shootaz Smart Parking 2022</caption>
+    <thead>
+    <tr>
+        <th>Sensor #</th>
+        <th>Started</th>
+        <th>Occupied?</th>
+    </tr>
+    </thead>
 {% for sensor in sensors %}
-<h3>Sensor</h3><hr>
-<p>{{sensor.sensor_id}}</p>
-<h3>Started at</h3><hr>
-<p>{{sensor.start_time}}</p>
-<h3>Is occupied?</h3>
-<p>{{records[sensor]}}</p>
+<tr>
+    <td>
+        {{sensor.sensor_id}}
+    </td>
+    <td>
+        {{sensor.start_time}}
+    </td>
+    {% if records[sensor].reading %}
+    <td class = "occupied">
+        Taken
+    </td>
+    {% else %}
+    <td class = "free">
+        Free
+    </td>
+    {% endif %}
+</tr>
 {% endfor %}
+</table>
 {% endblock %}

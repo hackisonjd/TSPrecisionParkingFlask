@@ -12,7 +12,6 @@ def home():
     records = {}
     for sensor in sensors:
         records[sensor] = Record.query.filter_by(sensor_id = sensor.sensor_id).order_by(Record.record_timestamp.desc()).first()
-
     return render_template('index.html', sensors = sensors, records = records)
 
 @views.route("/admin")
@@ -29,6 +28,10 @@ def post_status():
 
         # finds the sensor we want to use, then makes a new record for it
         sensor = Sensor.query.filter_by(sensor_id = device_id).first()
+        if sensor is None:
+            sensor = Sensor()
+            db.session.add(sensor)
+            db.session.commit()
         record = Record()
         record.sensor_id = sensor.sensor_id
 

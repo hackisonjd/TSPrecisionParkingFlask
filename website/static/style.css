@@ -1,0 +1,58 @@
+body {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 40px auto;
+    max-width: 650px;
+    padding: 0 10px;
+    font-family: sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+thead {
+    background-color: #333;
+    color: white;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2%;
+}
+
+th, td {
+    padding: 8px;
+}
+
+thead th {
+    width: 25%
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+
+.occupied {
+    background-color: #ED254E;
+
+}
+
+.free {
+    background-color: #71C562;
+}
