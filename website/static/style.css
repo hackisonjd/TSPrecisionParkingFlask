@@ -3,14 +3,15 @@ body {
     font-size: 18px;
     line-height: 1.6;
     margin: 40px auto;
-    max-width: 650px;
     padding: 0 10px;
-    font-family: sans-serif;
+    max-width: 650px;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    
 }
 
 table {
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 3px solid #333;
     text-align: center;
     vertical-align: middle;
 }
@@ -48,7 +49,7 @@ tbody tr:nth-child(even) {
 }
 
 
-.occupied {
+.occupied:nth-child(odd) {
     background-color: #ED254E;
 
 }
